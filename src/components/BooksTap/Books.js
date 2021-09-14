@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Book from './Book';
 
-const Books = props => {
+const Books = ({ books, goToDetail }) => {
   const [position, setPosition] = useState(0);
   const [originX, setOriginX] = useState(0);
   const [afterX, setAfterX] = useState(0);
@@ -10,7 +10,7 @@ const Books = props => {
 
   const handleSlide = e => {
     const newPosition = e.clientX - originX + afterX;
-    const hiddenLength = e.currentTarget.offsetWidth - 166 * BOOKS.length;
+    const hiddenLength = e.currentTarget.offsetWidth - 166 * books.length;
     if (isScroll === false) {
       return;
     }
@@ -31,6 +31,8 @@ const Books = props => {
       case 'leave':
         setIsScroll(false);
         break;
+      default:
+        break;
     }
   };
 
@@ -43,8 +45,8 @@ const Books = props => {
       onMouseUp={e => handleScroll(e, 'end')}
       onMouseLeave={e => handleScroll(e, 'leave')}
     >
-      {BOOKS.map((book, idx) => (
-        <Book book={book} key={idx} />
+      {books.map((book, idx) => (
+        <Book book={book} key={idx} goToDetail={goToDetail} origin={originX} />
       ))}
     </BookList>
   );

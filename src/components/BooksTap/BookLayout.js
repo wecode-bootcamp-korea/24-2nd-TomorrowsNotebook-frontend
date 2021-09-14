@@ -12,6 +12,7 @@ const BookLayout = ({ title, children }) => (
 const Container = styled.div`
   max-width: 70rem;
   min-width: 40rem;
+  min-height: 340px;
   margin: 0 auto;
   margin-bottom: ${({ isTitle }) => isTitle && '5rem'};
   overflow: hidden;

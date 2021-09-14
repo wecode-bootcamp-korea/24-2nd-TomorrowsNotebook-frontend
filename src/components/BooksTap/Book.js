@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Book = ({ book, handleSlide }) => {
+const Book = ({ book, handleSlide, goToDetail, origin }) => {
   return (
     <Item>
-      <Img src={book.image} alt="책 이미지" draggable={false} />
+      <Img
+        src={book.image}
+        alt="책 이미지"
+        draggable={false}
+        onClick={e => goToDetail(e, origin, book.book_id)}
+      />
       <UserInfo draggable="true">
-        <Name>{book.name}</Name>
+        <Name>{book.title}</Name>
         <Author>{book.author}</Author>
       </UserInfo>
     </Item>

@@ -4,12 +4,12 @@ import SubHeader from '../SubHeader/SubHeader';
 import BookCard from './BookCard';
 import Comment from './CommentCard';
 
-const TodaysBook = props => (
+const TodaysBook = ({ book, goToDetail }) => (
   <Container>
     <SubHeader title={'오늘의 책'} />
     <Content>
-      <BookCard />
-      <Comment />
+      <BookCard book={book} goToDetail={goToDetail} />
+      <Comment book={book} />
     </Content>
   </Container>
 );
