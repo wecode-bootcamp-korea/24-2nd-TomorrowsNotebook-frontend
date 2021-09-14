@@ -29,6 +29,7 @@ const Banners = props => {
 };
 
 const BannerContainer = styled.div`
+  position: relative;
   height: 400px;
   margin-bottom: 5rem;
 `;

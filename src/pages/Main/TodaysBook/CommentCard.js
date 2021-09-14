@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Icons } from '../../Search/FontAwesome';
 
-const CommentCard = props => {
+const CommentCard = ({ book: { nickname, user_image, comment } }) => {
   return (
     <Card>
       <UserContainer>
-        <Profile
-          src="http://www.theliving.co.kr/news/photo/201904/20808_3706_3433.jpg"
-          alt="유저 이미지"
-        />
+        {user_image !== 'NONE' ? (
+          <Profile src={user_image} alt="프로필 이미지" />
+        ) : (
+          <DefaultProfile />
+        )}
         <div>
-          <Title>Michelle의 추천평</Title>
+          <Title>{nickname === 'NONE' ? 'FE진' : nickname}의 추천평</Title>
           <Introduction>여기저기 기웃거리는 호기심쟁이</Introduction>
         </div>
       </UserContainer>
       <Comment>
-        문득 잊고 있던 것들이 떠올라 아무 이유 없이 헛헛해지는 그런 밤이 있죠.
-        그때 우리를 채워주는 건 어쩌면 한 그릇의 라면일지도 모르겠어요.
+        {comment === 'NONE' ? '아직 댓글이 없습니다.' : comment}
       </Comment>
     </Card>
   );
@@ -34,6 +35,12 @@ const Profile = styled.img`
   height: 3rem;
   margin-right: 1rem;
   border-radius: 50%;
+`;
+
+const DefaultProfile = styled(Icons.UserProfile)`
+  margin-right: 1rem;
+  color: ${({ theme }) => theme.middleGrey};
+  font-size: 3rem;
 `;
 
 const UserContainer = styled.div`

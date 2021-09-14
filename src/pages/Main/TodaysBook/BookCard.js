@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BookCard = props => {
+const BookCard = ({ book: { book_image, title, book_id }, goToDetail }) => {
   return (
     <Card>
       <BookImg
-        src="http://image.kyobobook.co.kr/images/book/xlarge/136/x9788969523136.jpg"
+        src={book_image}
         alt="책 이미지"
+        onClick={e => goToDetail(e, 0, book_id)}
       />
-      <BookName>열두 시에 라면을 끓인다는 건</BookName>
+      <BookName>{title}</BookName>
     </Card>
   );
 };
@@ -27,6 +28,7 @@ const BookImg = styled.img`
   height: auto;
   margin-right: 12px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
 `;
 
 const BookName = styled.span`
