@@ -1,10 +1,12 @@
 const theme = {
   yellow: '#ffeb60',
+  pupple: '#984ef0',
+  ivory: '#f9f9f5',
   grey: '#f7f7f7',
-  pupple: 'rgb(152,78,240)',
-  ivory: 'rgb(249,249,245)',
-  black: 'rgb(45,45,45)',
-  deepGrey: 'rgb(100,100,100)',
+  lightGrey: '#dddddd',
+  middleGrey: '#999999',
+  deepGrey: '#646464',
+  black: '#2d2d2d',
 };
 
 export default theme;
