@@ -1,65 +1,87 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const Nav = props => (
-  <BarFrame>
-    <SideBarFrame>
-      <SideContentBox>
-        <SideListBox>
-          <SideList>
-            <Link to="/">
-              <SideLogo alt="logo" src="/images/logo.png" />
-            </Link>
-          </SideList>
-          <SideList>
-            <i class="far fa-plus-square"></i>
-          </SideList>
-          <SideList>
-            <Link to="/mybooks">
-              <i class="fas fa-book-open" />
-            </Link>
-          </SideList>
-          <SideList>
-            <Link to="/search">
-              <i class="fas fa-search" />
-            </Link>
-          </SideList>
-          <SideList>
-            <i class="fas fa-cog" />
-          </SideList>
-        </SideListBox>
-        <SideRefrash>
-          <i class="fas fa-redo" />
-        </SideRefrash>
-      </SideContentBox>
-    </SideBarFrame>
-    <TopBarFrame>
-      <TopContentBox>
-        <TopLogoBox>
+const Nav = () => {
+  const history = useHistory();
+  return (
+    <BarFrame>
+      <SideBarFrame>
+        <SideContentBox>
+          <SideListBox>
+            <SideList>
+              <Link to="/">
+                <SideLogo alt="logo" src="/images/logo.png" />
+              </Link>
+            </SideList>
+            <SideList>
+              <i class="far fa-plus-square" />
+            </SideList>
+            <SideList>
+              <Link to="/mybooks">
+                <i class="fas fa-book-open" />
+              </Link>
+            </SideList>
+            <SideList>
+              <Link to="/search">
+                <i class="fas fa-search" />
+              </Link>
+            </SideList>
+            <SideList>
+              <i class="fas fa-cog" />
+            </SideList>
+          </SideListBox>
+          <SideRefrash>
+            <i class="fas fa-redo" />
+          </SideRefrash>
+        </SideContentBox>
+      </SideBarFrame>
+      <TopBarFrame>
+        <TopContentBox>
           <Link to="/">
-            <TopLogo alt="logo" src="/images/logo.png" />
-            NoteBooks
+            <TopLogoBox>
+              <div>
+                <TopLogo alt="logo" src="/images/logo.png" />
+              </div>
+              <div>NoteBooks</div>
+            </TopLogoBox>
           </Link>
-        </TopLogoBox>
-        <TopBtnBox>
-          <TopBtn>
-            <i class="far fa-user-circle"></i>
-          </TopBtn>
-          <TopBtn>
-            <Link to="/search">
-              <i class="fas fa-search" />
-            </Link>
-          </TopBtn>
-          <TopBtn>
-            <i class="far fa-bell" />
-          </TopBtn>
-          <TopSignBtn>로그아웃</TopSignBtn>
-        </TopBtnBox>
-      </TopContentBox>
-    </TopBarFrame>
-  </BarFrame>
-);
+          <TopBtnBox>
+            <TopBtn>
+              <i class="far fa-user-circle" />
+            </TopBtn>
+            <TopBtn>
+              <Link to="/search">
+                <i class="fas fa-search" />
+              </Link>
+            </TopBtn>
+            <TopBtn>
+              <i class="far fa-bell" />
+            </TopBtn>
+            {!!localStorage.getItem('kakao-token') ? (
+              <TopSignBtn
+                onClick={() => {
+                  localStorage.removeItem('kakao-token');
+                  history.push('/login');
+                }}
+              >
+                로그아웃
+              </TopSignBtn>
+            ) : (
+              <TopSignBtn
+                onClick={() => {
+                  history.push('/login');
+                }}
+              >
+                로그인
+              </TopSignBtn>
+            )}
+          </TopBtnBox>
+        </TopContentBox>
+      </TopBarFrame>
+    </BarFrame>
+  );
+};
 
 const BarFrame = styled.nav`
   position: sticky;
@@ -70,8 +92,8 @@ const BarFrame = styled.nav`
 
 const SideBarFrame = styled.div`
   position: fixed;
-  width: 80px;
-  height: 100rem;
+  width: 60px;
+  height: 100%;
   border-right: 1px solid rgb(223, 223, 223);
   background-color: rgb(255, 255, 255);
   z-index: 10001;
@@ -89,11 +111,11 @@ const SideListBox = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 const SideList = styled.li`
-  margin-top: 30px;
+  margin-top: 20px;
   color: ${props => props.theme.black};
   font-size: 20px;
 `;
@@ -104,13 +126,13 @@ const SideLogo = styled.img`
 `;
 
 const SideRefrash = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   font-size: 20px;
 `;
 
 const TopBarFrame = styled.nav`
-  width: 100rem;
-  height: 80px;
+  width: 100%;
+  height: 60px;
   padding-left: 80px;
   border-bottom: 1px solid rgb(223, 223, 223);
   background-color: rgb(255, 255, 255);
@@ -127,15 +149,16 @@ const TopContentBox = styled.div`
   padding: 10px;
 `;
 
-const TopLogoBox = styled.span`
+const TopLogoBox = styled.div`
   display: flex;
   align-items: center;
+  font-size: 18px;
   color: ${props => props.theme.black};
 `;
 
 const TopLogo = styled.img`
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
 `;
 
 const TopBtnBox = styled.div`
@@ -144,7 +167,7 @@ const TopBtnBox = styled.div`
   align-items: center;
 
   & i {
-    font-size: 25px;
+    font-size: 18px;
   }
 `;
 
@@ -153,12 +176,13 @@ const TopBtn = styled.span`
 `;
 
 const TopSignBtn = styled.button`
-  width: 130px;
-  height: 40px;
+  width: 80px;
+  height: 30px;
   color: white;
   background: ${props => props.theme.black};
-  border-radius: 7px;
-  font-size: 17px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
 `;
 
 export default Nav;
