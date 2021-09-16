@@ -10,22 +10,21 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 const Login = props => {
-  //소셜 로그인 연결 시 필요
   const history = useHistory();
   const { Kakao } = window;
-  console.log(process.env);
   const goToKakaoLogin = () => {
     Kakao.Auth.login({
       success: function (success) {
-        fetch(
-          `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env}&redirect_uri=http://localhost:3000/`,
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              access_token: success.access_token,
-            }),
-          }
-        )
+        fetch(`${process.env.REACT_APP_SERVER_URL}/users/sign-in/kakao`, {
+          method: 'POST',
+          headers: {
+            Authorization: success.access_token,
+          },
+          // 바디로 변경시 사용
+          // body: JSON.stringify({
+          //   access_token: success.access_token,
+          // }),
+        })
           .then(res => res.json())
           .then(res => {
             localStorage.setItem('kakao-token', res.access_token);
@@ -35,8 +34,13 @@ const Login = props => {
             }
           });
       },
+      fail: function (err) {
+        console.log(err);
+        alert(JSON.stringify(err));
+      },
     });
   };
+
   return (
     <LoginPage>
       <LogoBox>
@@ -52,9 +56,8 @@ const Login = props => {
           <SocialLoginBtn
             alt="cacaotalk-logo"
             src={SOCIAL_LOGIN_KAKAO_IMAGE_URL}
-            //소셜 로그인 연결시 필요
             onClick={goToKakaoLogin}
-          />
+          ></SocialLoginBtn>
           <SocialLoginBtn alt="naver-logo" src={SOCIAL_LOGIN_NAVER_IMAGE_URL} />
           <SocialLoginBtn
             alt="facebook"
