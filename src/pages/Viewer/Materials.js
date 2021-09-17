@@ -1,7 +1,6 @@
 import React from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import styled from 'styled-components';
-import theme from '../../styles/theme';
 import { Icons, iconBoxDefault } from '../Search/FontAwesome';
 import example from './example.pdf';
 
@@ -80,18 +79,18 @@ const PageNumber = styled.div`
   position: absolute;
   bottom: 3%;
   right: 1rem;
-  color: ${theme.middleGrey};
+  color: ${({ theme }) => theme.middleGrey};
   font-size: 0.7rem;
 `;
 
 const LeftArrow = styled(Icons.AngleL)`
   ${iconBoxDefault}
   margin: 0 20px;
-  color: ${theme.middleGrey};
+  color: ${({ theme }) => theme.middleGrey};
 `;
 
 const RightArrow = styled(Icons.AngleR)`
   ${iconBoxDefault}
   margin: 0 20px;
-  color: ${theme.middleGrey};
+  color: ${({ theme }) => theme.middleGrey};
 `;
