@@ -1,0 +1,192 @@
+{
+  "results": [
+    {
+      "user_nickname": "choseonghwan",
+      "user_image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
+      "user_totalbooks": [
+        {
+          "book_id": "1",
+          "book_name": "사몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "가",
+          "book_read": 30,
+          "book_publish_date": "2021-09-21",
+          "book_publisher": "창비",
+          "favorite": true
+        },
+        {
+          "book_id": "2",
+          "book_name": "파몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "라",
+          "book_read": 30,
+          "book_publish_date": "2021-08-21",
+          "book_publisher": "강비",
+          "favorite": false
+        },
+        {
+          "book_id": "3",
+          "book_name": "마몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "바",
+          "book_read": 30,
+          "book_publish_date": "2021-10-21",
+          "book_publisher": "낭비",
+          "favorite": true
+        },
+        {
+          "book_id": "4",
+          "book_name": "자몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "하",
+          "book_read": 30,
+          "book_publish_date": "2021-02-21",
+          "book_publisher": "앙비",
+          "favorite": true
+        },
+        {
+          "book_id": "5",
+          "book_name": "다몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "타",
+          "book_read": 30,
+          "book_publish_date": "2021-04-21",
+          "book_publisher": "망비",
+          "favorite": false
+        },
+        {
+          "book_id": "6",
+          "book_name": "가몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "자",
+          "book_read": 30,
+          "book_publish_date": "2021-05-21",
+          "book_publisher": "방비",
+          "favorite": true
+        },
+        {
+          "book_id": "7",
+          "book_name": "바몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/586/l9791197220586.jpg",
+          "book_author": "아",
+          "book_read": 30,
+          "book_publish_date": "2021-03-21",
+          "book_publisher": "당비",
+          "favorite": false
+        },
+        {
+          "book_id": "8",
+          "book_name": "라몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "바",
+          "book_read": 30,
+          "book_publish_date": "2021-01-21",
+          "book_publisher": "강비",
+          "favorite": false
+        },
+        {
+          "book_id": "9",
+          "book_name": "나몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "나",
+          "book_read": 30,
+          "book_publish_date": "2021-07-21",
+          "book_publisher": "상비",
+          "favorite": true
+        },
+        {
+          "book_id": "10",
+          "book_name": "차몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "사",
+          "book_read": 30,
+          "book_publish_date": "2021-11-21",
+          "book_publisher": "팡비",
+          "favorite": true
+        },
+        {
+          "book_id": "11",
+          "book_name": "아몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+          "book_author": "다",
+          "book_read": 30,
+          "book_publish_date": "2021-12-21",
+          "book_publisher": "항비",
+          "favorite": false
+        },
+        {
+          "book_id": "12",
+          "book_name": "아몬드",
+          "book_image": "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg",
+          "book_author": "파",
+          "book_read": 30,
+          "book_publish_date": "2021-09-21",
+          "book_publisher": "장비",
+          "favorite": false
+        }
+      ],
+      "user_shelves": [
+        {
+          "shelf_name": "읽고 있는책",
+          "book_image": [
+            "http://image.kyobobook.co.kr/images/book/large/796/l9791160508796.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/365/l9788965183365.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg"
+          ]
+        },
+        {
+          "shelf_name": "My Favorite",
+          "book_image": [
+            "http://image.kyobobook.co.kr/images/book/large/196/l9791191360196.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/326/l9791190977326.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/586/l9791197220586.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/586/l9791197220586.jpg"
+          ]
+        },
+        {
+          "shelf_id": 1,
+          "shelf_name": "책장 1",
+          "book_image": [
+            "http://image.kyobobook.co.kr/images/book/large/196/l9791191360196.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/265/l9791190977265.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg"
+          ]
+        },
+        {
+          "shelf_id": 2,
+          "shelf_name": "책장 2",
+          "book_image": [
+            "http://image.kyobobook.co.kr/images/book/large/196/l9791191360196.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/265/l9791190977265.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg"
+          ]
+        },
+        {
+          "shelf_id": 3,
+          "shelf_name": "책장 3",
+          "book_image": [
+            "http://image.kyobobook.co.kr/images/book/large/196/l9791191360196.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/265/l9791190977265.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg"
+          ]
+        },
+        {
+          "shelf_id": 4,
+          "shelf_name": "책장 4",
+          "book_image": [
+            "http://image.kyobobook.co.kr/images/book/large/196/l9791191360196.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/267/l9788936434267.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/265/l9791190977265.jpg",
+            "http://image.kyobobook.co.kr/images/book/large/085/l9788947544085.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}
