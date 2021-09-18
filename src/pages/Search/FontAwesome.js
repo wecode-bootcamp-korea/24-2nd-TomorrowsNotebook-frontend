@@ -10,6 +10,12 @@ export const Icons = {
   TimesCircle: props => (
     <i {...props} className={'fas fa-times-circle ' + props.className} />
   ),
+  AngleL: props => (
+    <i {...props} className={'fas fa-angle-left ' + props.className} />
+  ),
+  AngleR: props => (
+    <i {...props} className={'fas fa-angle-right ' + props.className} />
+  ),
 };
 
 export const iconBoxDefault = css`

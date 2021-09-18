@@ -1,9 +1,8 @@
 import React from 'react';
-import '../../styles/theme';
-import styled from 'styled-components';
 import SearchBooks from './SearchBooks';
 import Categories from './Categories';
 import Suggestions from './Suggestions';
+import styled from 'styled-components';
 
 const Search = () => {
   return (
