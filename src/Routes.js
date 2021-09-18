@@ -8,6 +8,7 @@ import Main from './pages/Main/Main';
 import Search from './pages/Search/Search';
 import MyBooks from './pages/MyBooks/MyBooks';
 import Detail from './pages/Detail/Detail';
+import Viewer from './pages/Viewer/Viewer';
 
 class Routes extends Component {
   render() {
@@ -21,6 +22,7 @@ class Routes extends Component {
           <Route exact path="/search" component={Search} />
           <Route exact path="/mybooks" component={MyBooks} />
           <Route exact path="/detail" component={Detail} />
+          <Route exact path="/viewer" component={Viewer} />
         </Switch>
         <Footer />
       </Router>

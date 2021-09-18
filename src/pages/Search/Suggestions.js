@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
 export default function Suggestions() {
   return (
@@ -23,7 +24,7 @@ export default function Suggestions() {
 
 const KeywordSearch = styled.div`
   margin-left: 10px;
-  color: ${props => props.theme.middleGrey};
+  color: ${theme.middleGrey};
   font-family: 'Noto Sans KR', sans-serif;
 `;
 
