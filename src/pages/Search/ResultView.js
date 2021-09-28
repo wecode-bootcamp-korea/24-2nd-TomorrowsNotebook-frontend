@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ListUl } from '@styled-icons/boxicons-regular/ListUl';
+import { useHistory } from 'react-router-dom';
 
 export const ResultView = ({ filterResult, totalCount }) => {
+  const history = useHistory();
+  const goToDetail = id => {
+    history.push(`detail/${id}`);
+  };
+
   return (
     <Result>
       <Container>
@@ -18,7 +24,11 @@ export const ResultView = ({ filterResult, totalCount }) => {
             {filterResult.map(book => {
               return (
                 <BookWrapper>
-                  <Img alt={book.title} src={book.image} />
+                  <Img
+                    alt={book.title}
+                    src={book.image}
+                    onClick={() => goToDetail(book.book_id)}
+                  />
                   <BookInfo>
                     <BookTitle>{book.title}</BookTitle>
                     <Author>{book.author}</Author>

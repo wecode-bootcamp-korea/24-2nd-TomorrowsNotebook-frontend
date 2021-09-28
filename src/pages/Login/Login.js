@@ -19,6 +19,7 @@ const Login = props => {
           method: 'POST',
           headers: {
             Authorization: success.access_token,
+            'Content-Type': 'application/json',
           },
           // 바디로 변경시 사용
           // body: JSON.stringify({
@@ -30,7 +31,7 @@ const Login = props => {
             localStorage.setItem('kakao-token', res.access_token);
             if (res.access_token) {
               alert('내일채움공책에 오신걸 환엽합니다!');
-              history.push('/');
+              history.push('/main');
             }
           });
       },

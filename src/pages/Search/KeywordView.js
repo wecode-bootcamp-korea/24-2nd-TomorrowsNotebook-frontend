@@ -38,4 +38,7 @@ const BookMatch = styled.li`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.middleGrey};
   cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.pupple};
+  }
 `;

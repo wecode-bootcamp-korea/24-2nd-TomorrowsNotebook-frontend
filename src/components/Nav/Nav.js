@@ -17,7 +17,7 @@ const Nav = () => {
         <SideContentBox>
           <SideListBox>
             <SideList>
-              <Link to="/">
+              <Link to="/main">
                 <SideLogo alt="logo" src="/images/logo.png" />
               </Link>
             </SideList>
@@ -45,7 +45,7 @@ const Nav = () => {
       </SideBarFrame>
       <TopBarFrame>
         <TopContentBox>
-          <Link to="/">
+          <Link to="/main">
             <TopLogoBox>
               <div>
                 <TopLogo alt="logo" src="/images/logo.png" />
@@ -69,7 +69,7 @@ const Nav = () => {
               <TopSignBtn
                 onClick={() => {
                   localStorage.removeItem('kakao-token');
-                  history.push('/login');
+                  history.push('/');
                 }}
               >
                 로그아웃
@@ -77,7 +77,7 @@ const Nav = () => {
             ) : (
               <TopSignBtn
                 onClick={() => {
-                  history.push('/login');
+                  history.push('/');
                 }}
               >
                 로그인
