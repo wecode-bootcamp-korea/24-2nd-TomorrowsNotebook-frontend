@@ -10,8 +10,8 @@ const Comment = ({
     nickname,
     written,
     likes,
-    isLiked,
-    isUser,
+    liked,
+    is_my_comment,
     comment,
     comment_id,
   },
@@ -25,14 +25,16 @@ const Comment = ({
     <TextBox>
       <UserInfo>
         <UserName>{nickname}</UserName>
-        {<Delete onClick={() => handleDeleteButton(comment_id)} />}
+        {is_my_comment && (
+          <Delete onClick={() => handleDeleteButton(comment_id)} />
+        )}
       </UserInfo>
       <CreatedDate>{written}</CreatedDate>
       <Reply>{comment}</Reply>
       <HeartWrapper>
         <SubText>이 리뷰가 마음에 드시나요?</SubText>
-        <HeartButton onClick={() => handleLike(comment_id)} isLiked={isLiked}>
-          {isLiked ? <FilledHeart /> : <Heart />}
+        <HeartButton onClick={() => handleLike(comment_id)} isLiked={liked}>
+          {liked ? <FilledHeart /> : <Heart />}
           <Count>{likes}</Count>
         </HeartButton>
       </HeartWrapper>

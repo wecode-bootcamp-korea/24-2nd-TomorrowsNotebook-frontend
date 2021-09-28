@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Icons } from '../../Search/FontAwesome';
 
-const BookSummary = ({ book: { image_url, title, authors } }) => (
+const BookSummary = ({ book: { image_url, title, authors }, comments }) => (
   <Container>
     <BookImg src={image_url} alt="책 이미지" />
     <BookInfo>
@@ -14,13 +14,13 @@ const BookSummary = ({ book: { image_url, title, authors } }) => (
         <LinkButton>
           <UserProfile />
           <Text>이 책이 담긴 서재</Text>
-          <Count>875개</Count>
+          <Count>10개</Count>
         </LinkButton>
         <Divider />
         <LinkButton>
           <CommentIcon />
           <Text>한 줄 리뷰</Text>
-          <Count>875개</Count>
+          <Count>{comments ? comments.length : 0}</Count>
         </LinkButton>
         <Divider />
         <LinkButton>

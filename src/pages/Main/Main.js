@@ -9,6 +9,8 @@ import TodaysBook from './TodaysBook/TodaysBook';
 import TodaysSentence from './TodaysSentence/TodaysSentence';
 import { customFetch } from '../../utils/api.js';
 import { GENRE_URL, RECOMMEND_URL } from '../../config.js';
+import Footer from '../../components/Footer/Footer';
+import Nav from '../../components/Nav/Nav';
 
 const Main = () => {
   const [recommendBook, setRecommendBook] = useState({});
@@ -51,33 +53,37 @@ const Main = () => {
   };
 
   return (
-    <OuterContainer>
-      <Banners />
-      <TodaysBook book={recommendBook} goToDetail={goToDetail} />
-      <CartoonBanner />
-      <BooksTap
-        title="한 달 이내에 출간된 책"
-        query={NEWBOOK}
-        goToDetail={goToDetail}
-      />
-      <BooksTap
-        title="해냄 출판사의 책"
-        query={PUBLISHER[0]}
-        goToDetail={goToDetail}
-      />
-      <PreferenceTap
-        currentGenre={currentGenre}
-        genreBooks={genreBooks}
-        handleGenre={handleGenre}
-        goToDetail={goToDetail}
-      />
-      <BooksTap
-        title="김영사 출판사의 책"
-        query={PUBLISHER[1]}
-        goToDetail={goToDetail}
-      />
-      <TodaysSentence />
-    </OuterContainer>
+    <>
+      <Nav />
+      <OuterContainer>
+        <Banners />
+        <TodaysBook book={recommendBook} goToDetail={goToDetail} />
+        <CartoonBanner />
+        <BooksTap
+          title="한 달 이내에 출간된 책"
+          query={NEWBOOK}
+          goToDetail={goToDetail}
+        />
+        <BooksTap
+          title="해냄 출판사의 책"
+          query={PUBLISHER[0]}
+          goToDetail={goToDetail}
+        />
+        <PreferenceTap
+          currentGenre={currentGenre}
+          genreBooks={genreBooks}
+          handleGenre={handleGenre}
+          goToDetail={goToDetail}
+        />
+        <BooksTap
+          title="김영사 출판사의 책"
+          query={PUBLISHER[1]}
+          goToDetail={goToDetail}
+        />
+        <TodaysSentence />
+      </OuterContainer>
+      <Footer />
+    </>
   );
 };
 

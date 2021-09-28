@@ -15,16 +15,17 @@ const Comments = ({
   <Container>
     <HeadTitle>
       한 줄 리뷰
-      <Count>{comments.length}</Count>
+      <Count>{comments ? comments.length : 0}</Count>
     </HeadTitle>
-    {comments.map(comment => (
-      <Comment
-        key={comment.id}
-        comment={comment}
-        handleLike={handleLike}
-        handleDeleteButton={handleDeleteButton}
-      />
-    ))}
+    {comments &&
+      comments.map(comment => (
+        <Comment
+          key={comment.id}
+          comment={comment}
+          handleLike={handleLike}
+          handleDeleteButton={handleDeleteButton}
+        />
+      ))}
     <InputForm
       updateComment={updateComment}
       handleValue={handleValue}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icons } from '../../Search/FontAwesome';
+import { ArrowIosDownward, ArrowIosUpward } from '@styled-icons/evaicons-solid';
 
 const BookDescription = ({ menu, index, isLast, text, isOpen, handleInfo }) => {
   return (
@@ -9,7 +9,12 @@ const BookDescription = ({ menu, index, isLast, text, isOpen, handleInfo }) => {
         <Title>{menu}</Title>
         {isOpen ? <ArrowUp /> : <ArrowDown />}
       </Button>
-      {isOpen && <Content>{text}</Content>}
+      {isOpen &&
+        (text.includes('\n') ? (
+          text.split('\n').map((p, idx) => <Content key={idx}>{p}</Content>)
+        ) : (
+          <Content>{text}</Content>
+        ))}
     </Container>
   );
 };
@@ -32,12 +37,12 @@ const Title = styled.h2`
   font-weight: bold;
 `;
 
-const ArrowDown = styled(Icons.ArrowDown)`
-  font-size: 1.1rem;
+const ArrowDown = styled(ArrowIosDownward)`
+  width: 1.5rem;
 `;
 
-const ArrowUp = styled(Icons.ArrowUp)`
-  font-size: 1.1rem;
+const ArrowUp = styled(ArrowIosUpward)`
+  width: 1.5rem;
 `;
 
 const Content = styled.p`

@@ -102,7 +102,7 @@ const Divider = styled.div`
 export default BookInfoTap;
 
 const DESCRIPTION_MENU = [
-  { title: '목차', content: 'index' },
+  { title: '목차', content: 'book_contents' },
   { title: '저자 소개', content: 'authors_intro' },
   { title: '출판사 소개', content: 'publisher_intro' },
 ];
