@@ -35,7 +35,7 @@ const SearchMain = ({
   }, [searchValue]);
 
   const isDefaultView = !isOnFocus && searchValue.length === 0;
-  const isKeywordView = isOnFocus && !isResultClicked && searchValue.length;
+  const isKeywordView = isOnFocus && !isResultClicked && !!searchValue.length;
   const isResultView = isOnFocus && isResultClicked;
 
   return (
@@ -48,7 +48,7 @@ const SearchMain = ({
           onFocus={focusInputIn}
           value={searchValue}
         />
-        {searchValue.length > 0 && <CloseButton onClick={clearSearchValue} />}
+        {!!searchValue.length && <CloseButton onClick={clearSearchValue} />}
       </Wrapper>
       {isDefaultView && <DefaultView />}
       {isKeywordView && <KeywordView filterResult={filterResult} />}

@@ -81,11 +81,11 @@ const Filter = styled.li`
   font-size: 0.8rem;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
-  color: ${theme.deepGrey};
+  color: ${({ theme }) => theme.deepGrey};
 `;
 
 const InputCloseBtn = styled.button`
-  color: ${theme.pupple};
+  color: ${({ theme }) => theme.pupple};
   font-weight: 600;
   cursor: pointer;
 `;
