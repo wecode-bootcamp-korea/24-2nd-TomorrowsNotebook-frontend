@@ -43,20 +43,24 @@ const Main = () => {
   };
 
   return (
-    <OuterContainer>
-      <Banners />
-      <TodaysBook book={recommendBook} />
-      <CartoonBanner />
-      <BooksTap title="한 달 이내에 출간된 책" query={NEWBOOK} />
-      <BooksTap title="해냄 출판사의 책" query={PUBLISHER[0]} />
-      <PreferenceTap
-        currentGenre={currentGenre}
-        genreBooks={genreBooks}
-        handleGenre={handleGenre}
-      />
-      <BooksTap title="김영사 출판사의 책" query={PUBLISHER[1]} />
-      <TodaysSentence />
-    </OuterContainer>
+    <>
+      <Nav />
+      <OuterContainer>
+        <Banners />
+        <TodaysBook book={recommendBook} />
+        <CartoonBanner />
+        <BooksTap title="한 달 이내에 출간된 책" query={NEWBOOK} />
+        <BooksTap title="해냄 출판사의 책" query={PUBLISHER[0]} />
+        <PreferenceTap
+          currentGenre={currentGenre}
+          genreBooks={genreBooks}
+          handleGenre={handleGenre}
+        />
+        <BooksTap title="김영사 출판사의 책" query={PUBLISHER[1]} />
+        <TodaysSentence />
+      </OuterContainer>
+      <Footer />
+    </>
   );
 };
 

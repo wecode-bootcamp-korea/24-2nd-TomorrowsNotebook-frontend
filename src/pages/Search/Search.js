@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchMain from './SearchMain';
 import SearchFilter from './SearchFilter';
+import Nav from '../../components/Nav/Nav';
 
 const Search = () => {
   const [isOnFocus, setIsOnFocus] = useState(false);
@@ -37,27 +38,30 @@ const Search = () => {
   };
 
   return (
-    <Container>
-      <MaxWidth>
-        <SearchFilter
-          type={type}
-          setFilter={setFilter}
-          isOnFocus={isOnFocus}
-          clearSearchMain={clearSearchMain}
-        />
-        <SearchMain
-          placeholder={placeholder}
-          searchTarget={api}
-          isOnFocus={isOnFocus}
-          focusInputIn={focusInputIn}
-          handleInputKeyword={handleInputKeyword}
-          clearSearchValue={clearSearchValue}
-          searchValue={searchValue}
-          isResultClicked={isResultClicked}
-          searchResultOn={searchResultOn}
-        />
-      </MaxWidth>
-    </Container>
+    <>
+      <Nav />
+      <Container>
+        <MaxWidth>
+          <SearchFilter
+            type={type}
+            setFilter={setFilter}
+            isOnFocus={isOnFocus}
+            clearSearchMain={clearSearchMain}
+          />
+          <SearchMain
+            placeholder={placeholder}
+            searchTarget={api}
+            isOnFocus={isOnFocus}
+            focusInputIn={focusInputIn}
+            handleInputKeyword={handleInputKeyword}
+            clearSearchValue={clearSearchValue}
+            searchValue={searchValue}
+            isResultClicked={isResultClicked}
+            searchResultOn={searchResultOn}
+          />
+        </MaxWidth>
+      </Container>
+    </>
   );
 };
 

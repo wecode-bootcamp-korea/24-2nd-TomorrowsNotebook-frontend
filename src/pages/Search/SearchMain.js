@@ -6,8 +6,7 @@ import { ResultView } from './ResultView';
 import styled from 'styled-components';
 import { Close } from '@styled-icons/ionicons-solid/Close';
 import { Search } from '@styled-icons/bootstrap/Search';
-
-const API = 'http://54.180.126.99:8000';
+import { BASE_URL } from '../../config';
 
 const SearchMain = ({
   placeholder,
@@ -25,7 +24,12 @@ const SearchMain = ({
 
   useEffect(() => {
     fetch(
-      `${API}/books/search?Search_Target=${searchTarget}&target=${searchValue}`
+      `${BASE_URL}/books/search?Search_Target=${searchTarget}&target=${searchValue}`,
+      {
+        headers: {
+          Authorization: localStorage.getItem('kakao-token'),
+        },
+      }
     )
       .then(res => res.json())
       .then(res => {

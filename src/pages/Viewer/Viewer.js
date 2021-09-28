@@ -4,6 +4,7 @@ import IndexModal from './IndexModal';
 import Materials from './Materials';
 import PageSlider from './PageSlider';
 import styled from 'styled-components';
+import { BASE_URL } from '../../config';
 
 const Viewer = () => {
   const [numPages, setNumPages] = useState(null);
@@ -35,7 +36,7 @@ const Viewer = () => {
   };
 
   const [getMaterial, setGetMaterial] = useState([]);
-  const url = 'http://10.58.7.133:8000/libraries/61/viewer';
+  const url = `http://10.58.2.152:8000/libraries/61/viewer`;
 
   useEffect(() => {
     fetch(url, {

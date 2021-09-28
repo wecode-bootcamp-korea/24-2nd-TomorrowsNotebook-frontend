@@ -20,7 +20,7 @@ const Books = ({
   };
 
   const goToDetail = () => {
-    history.push(`/books/${book_id}`);
+    history.push(`/detail/${book_id}`);
   };
 
   return (
