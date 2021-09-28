@@ -1,0 +1,59 @@
+{
+  "results": [
+    {
+      "user_nickname": "박지원",
+      "user_image": "http://k.kakaocdn.net/dn/cu3JV4/btrb83yxAQG/krZMlZizSkRMaY89xSq2K1/img_640x640.jpg",
+      "shelves_name": [
+        "My Favorite",
+        {
+          "shelf_id": 1,
+          "shelf_name": "유저1책장1"
+        },
+        {
+          "shelf_id": 2,
+          "shelf_name": "유저1책장2"
+        },
+        {
+          "shelf_id": 8,
+          "shelf_name": "유저1책장3"
+        },
+        {
+          "shelf_id": 9,
+          "shelf_name": "유저1책장4"
+        },
+        {
+          "shelf_id": 10,
+          "shelf_name": "조성환"
+        },
+        {
+          "shelf_id": 11,
+          "shelf_name": "조성환입니다1417"
+        },
+        {
+          "shelf_id": 12,
+          "shelf_name": "조성환입니다1418"
+        },
+        {
+          "shelf_id": 13,
+          "shelf_name": "박지원입니다1420"
+        },
+        {
+          "shelf_id": 14,
+          "shelf_name": "sdfsdf"
+        },
+        {
+          "shelf_id": 15,
+          "shelf_name": "whtjdghks"
+        },
+        {
+          "shelf_id": 16,
+          "shelf_name": "sdfdsfsd"
+        },
+        {
+          "shelf_id": 17,
+          "shelf_name": "조성환1718"
+        }
+      ]
+    }
+  ]
+}

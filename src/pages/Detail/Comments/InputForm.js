@@ -2,10 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const InputForm = ({ value, isValid, updateComment, handleValue }) => {
-  const ADD = {
-    type: 'add',
-    value: value,
-  };
+  const ADD_COMMENT = { type: 'add', value: value };
 
   return (
     <Container>
@@ -13,7 +10,7 @@ const InputForm = ({ value, isValid, updateComment, handleValue }) => {
         src="http://www.theliving.co.kr/news/photo/201904/20808_3706_3433.jpg"
         alt="사용자 프로필 이미지"
       />
-      <Form onSubmit={e => updateComment(e, ADD)}>
+      <Form onSubmit={e => updateComment(e, ADD_COMMENT)}>
         <InputBox>
           <Label htmlFor="comment">한 줄 리뷰</Label>
           <Input

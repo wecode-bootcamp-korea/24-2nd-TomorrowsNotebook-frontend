@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const DeleteModal = ({ handleCancle, updateComment, id }) => {
+const DeleteModal = ({ handleCancel, updateComment, id }) => {
   const DELETE = {
     type: 'delete',
     id,
@@ -11,7 +11,7 @@ const DeleteModal = ({ handleCancle, updateComment, id }) => {
     <Container>
       <Question>리뷰를 삭제하겠습니까?</Question>
       <Description>회원님이 등록한 리뷰가 삭제됩니다.</Description>
-      <Button action={'cancle'} onClick={() => handleCancle('delete')}>
+      <Button action="cancle" onClick={() => handleCancel('delete')}>
         취소
       </Button>
       <Button onClick={e => updateComment(e, DELETE)}>확인</Button>

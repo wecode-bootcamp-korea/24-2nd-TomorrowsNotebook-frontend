@@ -20,10 +20,9 @@ class Routes extends Component {
           <Route exact path="/" component={Main} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/mybooks" component={MyBooks} />
-          <Route exact path="/detail" component={Detail} />
+          <Route exact path="/detail/:id" component={Detail} />
           <Route exact path="/viewer/:id" component={Viewer} />
         </Switch>
-        <Footer />
       </Router>
     );
   }

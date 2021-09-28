@@ -49,6 +49,12 @@ export const Icons = {
   Ellipsis: props => (
     <i {...props} className={'fas fa-ellipsis-v ' + props.className} />
   ),
+
+  Plus: props => <i {...props} className={'fas fa-plus ' + props.className} />,
+
+  BookIcon: props => (
+    <i {...props} className={'fas fa-book ' + props.className} />
+  ),
 };
 
 export const iconBoxDefault = css`
