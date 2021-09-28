@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
 const PageSlider = ({ currentPage, setCurrentPage, numPages }) => {
   const [slidePage, setSlidePage] = useState(currentPage);
@@ -14,7 +15,7 @@ const PageSlider = ({ currentPage, setCurrentPage, numPages }) => {
 
   return (
     <Wrapper>
-      <MeHere
+      <input
         type="range"
         min={1}
         max={numPages}
@@ -31,29 +32,31 @@ export default PageSlider;
 
 const Wrapper = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   width: 100%;
-  height: 3%;
-  padding: 5px;
-`;
+  height: 1rem;
 
-const MeHere = styled.input`
-  width: 100%;
-  height: 100%;
-  -webkit-appearance: none;
+  input {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+      outline: none;
+    }
 
-  &::-webkit-slider-thumb {
-    /* -webkit-appearance: none; */
-    cursor: pointer;
-    z-index: 999;
-    height: 20px;
-    width: 20px;
-    border-radius: 15px;
-    outline: 0;
-    border: 0;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 1.6rem;
+      height: 0.5rem;
+      margin-bottom: 2px;
+      border-radius: 20px;
+      background: ${theme.pupple};
+      z-index: 997;
+      cursor: pointer;
+    }
   }
 `;

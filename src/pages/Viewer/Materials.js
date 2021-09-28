@@ -1,44 +1,34 @@
 import React from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import styled from 'styled-components';
-import { Icons, iconBoxDefault } from '../Search/FontAwesome';
-import example from './example.pdf';
+import { AngleRight, AngleLeft } from '@styled-icons/fa-solid';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Materials = ({
+  pdf,
   onDocumentLoadSuccess,
   currentPage,
-  setCurrentPage,
   numPages,
+  isSinglePage,
+  isOpen,
+  handleLeft,
+  handleRight,
 }) => {
-  const handleRightClicked = () => {
-    if (currentPage < numPages) {
-      setCurrentPage(currentPage + 1);
-    } else if ((currentPage = numPages)) {
-      alert('마지막 페이지입니다.');
-    }
-  };
-
-  const handleLeftClicked = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    } else if ((currentPage = 1)) {
-      alert('첫번째 페이지입니다.');
-    }
-  };
-
   return (
     <Wrapper>
-      <MoveTo direction="left" onClick={handleLeftClicked}>
-        <LeftArrow />
-      </MoveTo>
-      <MoveTo direction="right" onClick={handleRightClicked}>
-        <RightArrow />
-      </MoveTo>
+      {!isOpen && (
+        <>
+          <MoveTo direction="left" onClick={handleLeft}>
+            <LeftAngle />
+          </MoveTo>
+          <MoveTo direction="right" onClick={handleRight}>
+            <RightAngle />
+          </MoveTo>
+        </>
+      )}
       <Document
-        // file="https://janine-bucket.s3.amazonaws.com/git-document.pdf"
-        file={example}
+        file={pdf}
         onLoadSuccess={onDocumentLoadSuccess}
         onLoadError={console.error.message}
         options={{
@@ -46,7 +36,14 @@ const Materials = ({
           cMapPacked: true,
         }}
       >
-        <Page pageNumber={currentPage} />
+        {isSinglePage ? (
+          <Page pageNumber={currentPage} height={800} />
+        ) : (
+          <PageWrapper>
+            <Page pageNumber={currentPage} height={800} />
+            <Page pageNumber={currentPage + 1} height={800} />
+          </PageWrapper>
+        )}
       </Document>
       <PageNumber>
         {currentPage} / {numPages}
@@ -58,8 +55,8 @@ const Materials = ({
 export default Materials;
 
 const Wrapper = styled.div`
+  padding: 10px;
   position: relative;
-  overflow: hidden;
 `;
 
 const MoveTo = styled.div`
@@ -68,29 +65,45 @@ const MoveTo = styled.div`
   align-items: center;
   position: absolute;
   ${props => props.direction}: 0;
-  top: 0;
+  bottom: 5px;
   z-index: 999;
   width: 25%;
-  height: 97%;
+  height: 720px;
   cursor: pointer;
 `;
 
 const PageNumber = styled.div`
   position: absolute;
   bottom: 3%;
-  right: 1rem;
+  right: 2rem;
   color: ${({ theme }) => theme.middleGrey};
   font-size: 0.7rem;
 `;
 
-const LeftArrow = styled(Icons.AngleL)`
-  ${iconBoxDefault}
+const LeftAngle = styled(AngleLeft)`
   margin: 0 20px;
+  width: 2rem;
+  opacity: 0;
   color: ${({ theme }) => theme.middleGrey};
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
-const RightArrow = styled(Icons.AngleR)`
-  ${iconBoxDefault}
+const RightAngle = styled(AngleRight)`
   margin: 0 20px;
+  width: 2rem;
+  opacity: 0;
   color: ${({ theme }) => theme.middleGrey};
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const PageWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-top: 10px;
 `;

@@ -13,35 +13,25 @@ const Viewer = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const handleRight = () => {
-    if (isSinglepage) {
-      if (currentPage < numPages) {
-        setCurrentPage(currentPage + 1);
-      } else if (currentPage === numPages) {
-        alert('마지막 페이지입니다.');
-      }
-    } else if (isDoublepage) {
-      if (currentPage < numPages) {
-        setCurrentPage(currentPage + 2);
-      } else if (currentPage === numPages) {
-        alert('마지막 페이지입니다.');
-      }
+    const moveLimit = isSinglePage ? 1 : 2;
+
+    if (currentPage === numPages) {
+      alert('마지막 페이지입니다.');
+      return;
     }
+
+    setCurrentPage(currentPage + moveLimit);
   };
 
   const handleLeft = () => {
-    if (isSinglepage) {
-      if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
-      } else if (currentPage === 1) {
-        alert('첫번째 페이지입니다.');
-      }
-    } else if (isDoublepage) {
-      if (currentPage > 1) {
-        setCurrentPage(currentPage - 2);
-      } else if (currentPage === 1) {
-        alert('첫번째 페이지입니다.');
-      }
+    const moveLimit = isSinglePage ? 1 : 2;
+
+    if (currentPage === 1) {
+      alert('첫번째 페이지입니다.');
+      return;
     }
+
+    setCurrentPage(currentPage - moveLimit);
   };
 
   const [getMaterial, setGetMaterial] = useState([]);
@@ -49,7 +39,6 @@ const Viewer = () => {
 
   useEffect(() => {
     fetch(url, {
-      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization:
@@ -75,34 +64,18 @@ const Viewer = () => {
     setIsIndexOpen(false);
   };
 
-  const [isSinglepage, setIsSinglepage] = useState(true);
-  const [isDoublepage, setIsDoublepage] = useState(false);
-  const handleSinglePage = () => {
-    if (isDoublepage) {
-      setIsSinglepage(true);
-      setIsDoublepage(false);
-    } else {
-      setIsSinglepage(true);
-    }
-  };
+  const [isSinglePage, setIsSinglePage] = useState(true);
 
-  const handleDoublePage = () => {
-    if (isSinglepage) {
-      setIsSinglepage(false);
-      setIsDoublepage(true);
-    } else {
-      setIsDoublepage(true);
-    }
+  const toggleSinglePage = () => {
+    setIsSinglePage(prev => !prev);
   };
 
   return (
     <PdfViewer>
       {isOpen && (
         <Modal
-          handleSinglePage={handleSinglePage}
-          handleDoublePage={handleDoublePage}
-          isSinglepage={isSinglepage}
-          isDoublepage={isDoublepage}
+          toggleSinglePage={toggleSinglePage}
+          isSinglePage={isSinglePage}
           toggleIndex={toggleIndex}
         />
       )}
@@ -113,8 +86,7 @@ const Viewer = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           numPages={numPages}
-          isSinglepage={isSinglepage}
-          isDoublepage={isDoublepage}
+          isSinglePage={isSinglePage}
           isOpen={isOpen}
           handleRight={handleRight}
           handleLeft={handleLeft}

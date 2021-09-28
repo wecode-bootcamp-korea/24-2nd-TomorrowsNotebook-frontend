@@ -14,15 +14,14 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <Nav />
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Main} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/mybooks" component={MyBooks} />
-          <Route exact path="/detail/:id" component={Detail} />
-          <Route exact path="/viewer" component={Viewer} />
+          <Route exact path="/detail" component={Detail} />
+          <Route exact path="/viewer/:id" component={Viewer} />
         </Switch>
         <Footer />
       </Router>
