@@ -10,7 +10,12 @@ import DeleteModal from '../../components/Modal/DeleteModal';
 import Potal from '../../components/Modal/Potal';
 import ModalLayout from '../../components/Modal/ModalLayout';
 import ToMyBooksModal from '../../components/Modal/ToMyBooksModal';
-import { BASE_URL } from '../../config.js';
+import {
+  BOOK_URL,
+  LIBRARY_URL,
+  LIKE_URL,
+  MAKELIBRARY_URL,
+} from '../../config.js';
 import LibraryModal from '../../components/Modal/LibraryModal';
 import Nav from '../../components/Nav/Nav';
 
@@ -27,10 +32,11 @@ const Detail = () => {
     id: 0,
   });
   const [libraryList, setLibraryList] = useState([]);
+  const [user, setUser] = useState('');
   const params = useParams();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/books/${params.id}`)
+    fetch(`${BOOK_URL + params.id}`)
       .then(res => res.json())
       .then(res => setBook(res.RESULT))
       .catch(err => alert(err));
@@ -41,30 +47,28 @@ const Detail = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/libraries/shelflist`, {
+    fetch(`${LIBRARY_URL}`, {
       headers: {
-        // 테스트용 임시토큰
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
     })
       .then(res => res.json())
-      .then(res =>
+      .then(res => {
         setLibraryList(
           res.results[0].shelves_name.map(item => {
             return { ...item, isChecked: false };
           })
-        )
-      )
+        );
+        setUser(res.results[0].user_image);
+      })
       .catch(err => alert(err));
   }, [openModal]);
 
   const getComment = () => {
-    fetch(`${BASE_URL}/books/${params.id}/comments`, {
+    fetch(`${BOOK_URL + params.id}/comments`, {
       headers: {
         // 테스트용 임시토큰
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
     })
       .then(res => res.json())
@@ -78,12 +82,10 @@ const Detail = () => {
   };
 
   const handleLike = id => {
-    fetch(`${BASE_URL}/books/comments-like?comment_id=${id}`, {
+    fetch(`${LIKE_URL + id}`, {
       method: 'POST',
       headers: {
-        // 테스트용 임시토큰
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
     })
       .then(res => res.json())
@@ -134,12 +136,10 @@ const Detail = () => {
   const onPutBook = () => {
     const id = libraryList.filter(library => library.isChecked)[0].shelf_id;
 
-    fetch(`${BASE_URL}/libraries/shelflist`, {
+    fetch(`${LIBRARY_URL}`, {
       method: 'POST',
       headers: {
-        // 테스트용 임시토큰
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
       body: JSON.stringify({
         shelf_id: id,
@@ -158,12 +158,10 @@ const Detail = () => {
   };
 
   const addLibrary = () => {
-    fetch(`${BASE_URL}/libraries`, {
+    fetch(`${MAKELIBRARY_URL}`, {
       method: 'POST',
       headers: {
-        // 테스트용 임시토큰
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
       body: JSON.stringify({
         shelf_name: libraryName,
@@ -186,11 +184,10 @@ const Detail = () => {
   };
 
   const addComment = (e, value) => {
-    fetch(`${BASE_URL}/books/${params.id}/comments`, {
+    fetch(`${BOOK_URL + params.id}/comments`, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
       body: JSON.stringify({
         text: commentValue,
@@ -210,11 +207,10 @@ const Detail = () => {
   };
 
   const deleteComment = id => {
-    fetch(`${BASE_URL}/books/${params.id}/comments?comment_id=${id}`, {
+    fetch(`${BOOK_URL + params.id}/comments?comment_id=${id}`, {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qv95Bi-t7XRinlViaIJthSkG5wKt6ZHDICMZm2pANh8',
+        Authorization: localStorage.getItem('kakao-token'),
       },
     })
       .then(res => res.status)
@@ -295,6 +291,7 @@ const Detail = () => {
               updateComment={updateComment}
               handleValue={handleCommentValue}
               handleDeleteButton={handleDeleteButton}
+              user={user}
             />
           </Wrapper>
           <AsideMenu

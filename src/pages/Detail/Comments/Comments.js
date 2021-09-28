@@ -6,6 +6,7 @@ import InputForm from './InputForm';
 const Comments = ({
   comments,
   value,
+  user,
   isValid,
   handleLike,
   updateComment,
@@ -31,6 +32,7 @@ const Comments = ({
       handleValue={handleValue}
       value={value}
       isValid={isValid}
+      user={user}
     />
   </Container>
 );
