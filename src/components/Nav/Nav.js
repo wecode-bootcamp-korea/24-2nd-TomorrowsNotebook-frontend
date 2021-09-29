@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
+import { PlusSquare } from '@styled-icons/bootstrap/PlusSquare';
+import { Library } from '@styled-icons/ionicons-sharp/Library';
+import { Search } from '@styled-icons/bootstrap/Search';
+import { Settings } from '@styled-icons/feather/Settings';
+import { PersonCircle } from '@styled-icons/bootstrap/PersonCircle';
+import { Bell } from '@styled-icons/bootstrap/Bell';
+import { Refresh } from '@styled-icons/evaicons-solid/Refresh';
 
 const Nav = () => {
   const history = useHistory();
@@ -15,24 +22,24 @@ const Nav = () => {
               </Link>
             </SideList>
             <SideList>
-              <i class="far fa-plus-square" />
+              <PlusIcon />
             </SideList>
             <SideList>
               <Link to="/mybooks">
-                <i class="fas fa-book-open" />
+                <LibraryIcon />
               </Link>
             </SideList>
             <SideList>
               <Link to="/search">
-                <i class="fas fa-search" />
+                <SearchIcon />
               </Link>
             </SideList>
             <SideList>
-              <i class="fas fa-cog" />
+              <SettingsIcon />
             </SideList>
           </SideListBox>
           <SideRefrash>
-            <i class="fas fa-redo" />
+            <RefreshIcon />
           </SideRefrash>
         </SideContentBox>
       </SideBarFrame>
@@ -48,15 +55,15 @@ const Nav = () => {
           </Link>
           <TopBtnBox>
             <TopBtn>
-              <i class="far fa-user-circle" />
+              <PersonCircleIcon />
             </TopBtn>
             <TopBtn>
               <Link to="/search">
-                <i class="fas fa-search" />
+                <SearchIcon />
               </Link>
             </TopBtn>
             <TopBtn>
-              <i class="far fa-bell" />
+              <BellIcon />
             </TopBtn>
             {!!localStorage.getItem('kakao-token') ? (
               <TopSignBtn
@@ -92,6 +99,8 @@ const BarFrame = styled.nav`
 
 const SideBarFrame = styled.div`
   position: fixed;
+  top: 0px;
+  left: 0px;
   width: 60px;
   height: 100%;
   border-right: 1px solid rgb(223, 223, 223);
@@ -183,6 +192,34 @@ const TopSignBtn = styled.button`
   border-radius: 4px;
   font-size: 12px;
   cursor: pointer;
+`;
+
+const PlusIcon = styled(PlusSquare)`
+  width: 20px;
+`;
+
+const LibraryIcon = styled(Library)`
+  width: 20px;
+`;
+
+const SearchIcon = styled(Search)`
+  width: 20px;
+`;
+
+const SettingsIcon = styled(Settings)`
+  width: 20px;
+`;
+
+const PersonCircleIcon = styled(PersonCircle)`
+  width: 20px;
+`;
+
+const BellIcon = styled(Bell)`
+  width: 20px;
+`;
+
+const RefreshIcon = styled(Refresh)`
+  width: 20px;
 `;
 
 export default Nav;
