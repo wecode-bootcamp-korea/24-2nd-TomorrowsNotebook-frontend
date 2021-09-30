@@ -4,6 +4,7 @@ import Top from './MyBooksComponent/Top/Top';
 import MybooksNav from './MyBooksComponent/MybooksNav/MybooksNav';
 import Books from './MyBooksComponent/TotalBooks/Books';
 import MainShelf from './MyBooksComponent/Shelf/MainShelf';
+import Nav from '../../components/Nav/Nav';
 
 const MyBooks = () => {
   const [libraries, setLibraries] = useState({
@@ -23,17 +24,17 @@ const MyBooks = () => {
   const [alignData, setAlignData] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}/libraries`, {
-      headers: {
-        Authorization: localStorage.getItem('kakao-token'),
-      },
-    })
-      .then(res => res.json())
-      .then(res => {
-        const { user_nickname, user_image, user_totalbooks } = res.results[0];
-
-        setLibraries({ user_nickname, user_image, user_totalbooks });
-      });
+    localStorage.getItem('kakao-token') &&
+      fetch(`${process.env.REACT_APP_SERVER_URL}/libraries`, {
+        headers: {
+          Authorization: localStorage.getItem('kakao-token'),
+        },
+      })
+        .then(res => res.json())
+        .then(res => {
+          const { user_nickname, user_image, user_totalbooks } = res.results[0];
+          setLibraries({ user_nickname, user_image, user_totalbooks });
+        });
   }, []);
 
   const addShelf = () => {
@@ -48,22 +49,13 @@ const MyBooks = () => {
       .then(res => {
         if (res.MESSAGE === 'SUCCESS') {
           alert(`서재에 책장이 추가 되었습니다`);
-          const newItem = {
-            shelf_id: 0,
-            shelf_name: shelfName,
-            book_image: [],
-          };
-          setShelves({
-            user_nickname: libraries.user_nickname,
-            user_image: libraries.user_image,
-            user_shelves: libraries.user_shelves.concat(newItem),
-          });
         } else if (res.MESSAGE === `ALREADY EXISTED SHELF`) {
           alert(`이름이 ${shelfName} 과 같은 책장이 이미 있어요!`);
         } else if (res.MESSAGE === `INPUT ERROR`) {
           alert(`책장 이름을 추가 해주세요!`);
         }
         setShelfName('');
+        clickshelves();
       });
   };
 
@@ -126,25 +118,28 @@ const MyBooks = () => {
   };
 
   return (
-    <PageFrame>
-      <Top user_nickname={user_nickname} user_image={user_image} />
-      <MainFrame>
-        <MybooksNav
-          user_shelves={user_shelves}
-          user_totalbooks={user_totalbooks}
-          scrollActive={scrollActive}
-          selectNav={selectNav}
-          setSelectNav={setSelectNav}
-          setShelfName={setShelfName}
-          addShelf={addShelf}
-          selectAlign={selectAlign}
-          setSelectAlign={setSelectAlign}
-          activeApply={activeApply}
-          clickshelves={clickshelves}
-        />
-        {selectNav === 'Total' ? MainContent.TotalBooks : MainContent.shelf}
-      </MainFrame>
-    </PageFrame>
+    <>
+      <Nav />
+      <PageFrame>
+        <Top user_nickname={user_nickname} user_image={user_image} />
+        <MainFrame>
+          <MybooksNav
+            user_shelves={user_shelves}
+            user_totalbooks={user_totalbooks}
+            scrollActive={scrollActive}
+            selectNav={selectNav}
+            setSelectNav={setSelectNav}
+            setShelfName={setShelfName}
+            addShelf={addShelf}
+            selectAlign={selectAlign}
+            setSelectAlign={setSelectAlign}
+            activeApply={activeApply}
+            clickshelves={clickshelves}
+          />
+          {selectNav === 'Total' ? MainContent.TotalBooks : MainContent.shelf}
+        </MainFrame>
+      </PageFrame>
+    </>
   );
 };
 

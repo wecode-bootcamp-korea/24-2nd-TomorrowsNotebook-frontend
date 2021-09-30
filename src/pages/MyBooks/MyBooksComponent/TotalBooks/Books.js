@@ -16,11 +16,11 @@ const Books = ({
   const history = useHistory();
 
   const goToViewer = () => {
-    history.push(`${process.env.REACT_APP_SERVER_URL}/books/${book_id}`);
+    history.push(`/viewer/${book_id}`);
   };
 
   const goToDetail = () => {
-    history.push(`${process.env.REACT_APP_SERVER_URL}/books/${book_id}`);
+    history.push(`/books/${book_id}`);
   };
 
   return (
