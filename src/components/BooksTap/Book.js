@@ -1,14 +1,26 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Book = ({ book, handleSlide, goToDetail, origin }) => {
+const Book = ({ book, origin }) => {
+  const history = useHistory();
+
+  const goToDetail = () => {
+    history.push(`/detail/${book.book_id}`);
+  };
+
   return (
     <Item>
       <Img
         src={book.image}
         alt="책 이미지"
         draggable={false}
-        onClick={e => goToDetail(e, origin, book.book_id)}
+        onClick={e => {
+          const isDragActive = origin && e.clientX !== origin;
+          if (isDragActive) return;
+
+          goToDetail();
+        }}
       />
       <UserInfo draggable="true">
         <Name>{book.title}</Name>

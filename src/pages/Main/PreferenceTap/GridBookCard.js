@@ -1,14 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-const GridBookCard = ({
-  book: { title, image, book_id },
-  isTop,
-  goToDetail,
-}) => {
+const GridBookCard = ({ book: { title, image, book_id }, isTop }) => {
+  const history = useHistory();
+
+  const goToDetail = () => {
+    history.push(`/detail/${book_id}`);
+  };
+
   return (
     <Container isTop={isTop}>
-      <Card onClick={e => goToDetail(e, 0, book_id)}>
+      <Card onClick={goToDetail}>
         <Img src={image} alt="책 이미지" />
       </Card>
       <Name>{title}</Name>
@@ -16,10 +19,9 @@ const GridBookCard = ({
   );
 };
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: ${({ isTop }) => (isTop ? 'flex-start' : 'flex-end')};
   height: 240px;
 `;
 

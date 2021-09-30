@@ -4,7 +4,7 @@ import Books from './Books';
 import { customFetch } from '../../utils/api.js';
 import { BOOK_URL } from '../../config';
 
-const BooksTap = ({ title, query, goToDetail }) => {
+const BooksTap = ({ title, query }) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const BooksTap = ({ title, query, goToDetail }) => {
 
   return (
     <BookLayout title={title}>
-      <Books books={books} goToDetail={goToDetail} />
+      <Books books={books} />
     </BookLayout>
   );
 };
