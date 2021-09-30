@@ -31,8 +31,7 @@ const ShelvesNav = ({ user_shelves, setShelfName, addShelf, clickshelves }) => {
         fetch(`${process.env.REACT_APP_SERVER_URL}/libraries/shelfdelete`, {
           method: 'POST',
           headers: {
-            Authorization:
-              'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.3qAnA8mLVQeeRZcdL0nMsAyLhbuPkSyDA-VhUbkNLvY',
+            Authorization: localStorage.getItem('kakao-token'),
           },
           body: JSON.stringify({ shelf_id }),
         }).then(res => res.json())

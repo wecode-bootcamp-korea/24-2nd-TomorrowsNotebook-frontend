@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 const BookCovers = ({ covers }) => {
   return (
     <BookCover>
-      {covers ? (
+      {covers.lengh > 0 ? (
         covers.map((cover, idx) => {
           return (
             <Cover key={idx} style={{ zIndex: 9500 - idx }}>

@@ -16,17 +16,19 @@ const MybooksNav = ({
   activeApply,
   clickshelves,
 }) => {
-  const toggleTap = () => setSelectNav(prev => !prev);
-
   return (
     <NavFrame scrollActive={scrollActive}>
       <NavBox>
-        <MainNav onClick={toggleTap} selectNav={selectNav} value="Total">
+        <MainNav
+          onClick={() => setSelectNav('Total')}
+          selectNav={selectNav}
+          value="Total"
+        >
           전체도서
         </MainNav>
         <MainNav
           onClick={() => {
-            toggleTap();
+            setSelectNav('Shelf');
             clickshelves();
           }}
           selectNav={selectNav}
