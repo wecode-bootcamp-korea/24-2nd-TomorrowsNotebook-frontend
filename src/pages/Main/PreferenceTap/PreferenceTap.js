@@ -2,25 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import SubHeader from '../SubHeader/SubHeader';
 import Genres from './Genres';
-import GridBookCard from './GridBookCard';
+import GridBookCard, { Container as ChildContainer } from './GridBookCard';
 
-const PreferenceTap = ({
-  genreBooks,
-  currentGenre,
-  handleGenre,
-  goToDetail,
-}) => (
+const PreferenceTap = ({ genreBooks, currentGenre, handleGenre }) => (
   <Container>
     <SubHeader title="이번 주 취향별 추천 책" />
     <Genres currentGenre={currentGenre} handleGenre={handleGenre} />
     <BooksContainer>
-      {genreBooks.map((book, idx) => (
-        <GridBookCard
-          book={book}
-          key={book.book_id}
-          isTop={(idx + 1) % 3 === 2}
-          goToDetail={goToDetail}
-        />
+      {genreBooks.map(book => (
+        <GridBookCard book={book} key={book.book_id} />
       ))}
     </BooksContainer>
   </Container>
@@ -30,6 +20,14 @@ const Container = styled.div`
   max-width: 70rem;
   min-width: 40rem;
   margin: 0 auto 5rem;
+
+  ${ChildContainer} {
+    justify-content: flex-end;
+
+    &:nth-of-type(3n + 2) {
+      justify-content: flex-start;
+    }
+  }
 `;
 
 const BooksContainer = styled.div`
@@ -37,6 +35,7 @@ const BooksContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
 `;
+
 export default PreferenceTap;
 
 const PREBOOKS = [

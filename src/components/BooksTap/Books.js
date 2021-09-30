@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Book from './Book';
 
-const Books = ({ books, goToDetail }) => {
+const Books = ({ books }) => {
   const [position, setPosition] = useState(0);
   const [originX, setOriginX] = useState(0);
   const [afterX, setAfterX] = useState(0);
@@ -46,7 +46,7 @@ const Books = ({ books, goToDetail }) => {
       onMouseLeave={e => handleScroll(e, 'leave')}
     >
       {books.map((book, idx) => (
-        <Book book={book} key={idx} goToDetail={goToDetail} origin={originX} />
+        <Book book={book} key={idx} origin={originX} />
       ))}
     </BookList>
   );

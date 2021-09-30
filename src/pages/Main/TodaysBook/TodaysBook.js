@@ -4,11 +4,11 @@ import SubHeader from '../SubHeader/SubHeader';
 import BookCard from './BookCard';
 import Comment from './CommentCard';
 
-const TodaysBook = ({ book, goToDetail }) => (
+const TodaysBook = ({ book }) => (
   <Container>
     <SubHeader title={'오늘의 책'} />
     <Content>
-      <BookCard book={book} goToDetail={goToDetail} />
+      <BookCard book={book} />
       <Comment book={book} />
     </Content>
   </Container>

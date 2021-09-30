@@ -1,14 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-const BookCard = ({ book: { book_image, title, book_id }, goToDetail }) => {
+const BookCard = ({ book: { book_image, title, book_id } }) => {
+  const history = useHistory();
+
+  const goToDetail = () => {
+    history.push(`/detail/${book_id}`);
+  };
+
   return (
     <Card>
-      <BookImg
-        src={book_image}
-        alt="책 이미지"
-        onClick={e => goToDetail(e, 0, book_id)}
-      />
+      <BookImg src={book_image} alt="책 이미지" onClick={goToDetail} />
       <BookName>{title}</BookName>
     </Card>
   );
@@ -35,4 +38,5 @@ const BookName = styled.span`
   font-size: 0.9rem;
   font-weight: bold;
 `;
+
 export default BookCard;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import BooksTap from '../../components/BooksTap/BooksTap';
 import Banners from './Banners/Banners';
@@ -16,7 +15,6 @@ const Main = () => {
   const [recommendBook, setRecommendBook] = useState({});
   const [currentGenre, setCurrentGenre] = useState('에세이');
   const [genreBooks, setGenreBooks] = useState([]);
-  const history = useHistory();
 
   useEffect(() => {
     customFetch(
@@ -44,46 +42,21 @@ const Main = () => {
     setCurrentGenre(genre);
   };
 
-  const goToDetail = (e, origin = 0, id) => {
-    if (origin !== 0 && e.clientX !== origin) {
-      // 드래그가 일어난 경우에는 상세페이지로 이동 X
-      return;
-    }
-    history.push(`/detail/${id}`);
-  };
-
   return (
-    <>
-      <Nav />
-      <OuterContainer>
-        <Banners />
-        <TodaysBook book={recommendBook} goToDetail={goToDetail} />
-        <CartoonBanner />
-        <BooksTap
-          title="한 달 이내에 출간된 책"
-          query={NEWBOOK}
-          goToDetail={goToDetail}
-        />
-        <BooksTap
-          title="해냄 출판사의 책"
-          query={PUBLISHER[0]}
-          goToDetail={goToDetail}
-        />
-        <PreferenceTap
-          currentGenre={currentGenre}
-          genreBooks={genreBooks}
-          handleGenre={handleGenre}
-          goToDetail={goToDetail}
-        />
-        <BooksTap
-          title="김영사 출판사의 책"
-          query={PUBLISHER[1]}
-          goToDetail={goToDetail}
-        />
-        <TodaysSentence />
-      </OuterContainer>
-      <Footer />
-    </>
+    <OuterContainer>
+      <Banners />
+      <TodaysBook book={recommendBook} />
+      <CartoonBanner />
+      <BooksTap title="한 달 이내에 출간된 책" query={NEWBOOK} />
+      <BooksTap title="해냄 출판사의 책" query={PUBLISHER[0]} />
+      <PreferenceTap
+        currentGenre={currentGenre}
+        genreBooks={genreBooks}
+        handleGenre={handleGenre}
+      />
+      <BooksTap title="김영사 출판사의 책" query={PUBLISHER[1]} />
+      <TodaysSentence />
+    </OuterContainer>
   );
 };
 
