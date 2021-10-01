@@ -19,7 +19,7 @@
 
 
 <div id=header align="center">
-  <img src="#">
+  <img src="">
   <a href="https://youtu.be/tThYy28aRaU">시연 영상 보러가기</a>
 </div>
 
@@ -74,8 +74,8 @@
   <table style="text-align:center;">
     <tr>
       <th><a href="https://github.com/janine-kang">강연옥</a></th>
-      <th><a href="https://github.com/dev-bomdong">조성환</a></th>
-      <th><a href="https://github.com/esphoenixc">주철진</a></th>
+      <th><a href="https://github.com/choseonghwan91">조성환</a></th>
+      <th><a href="https://github.com/JUCHEOLJIN">주철진</a></th>
     </tr>
     <tr>
       <td>
@@ -99,9 +99,9 @@
   <h4> 🛢 Back-End </h4>
   <table style="text-align:center;">
     <tr>
-      <th><a href="https://github.com/jay95ko">박지원</a></th>
-      <th><a href="https://github.com/fall031-muk">신우주</a></th>
-      <th><a href="https://github.com/fall031-muk">이무현</a></th>
+      <th><a href="https://github.com/jiwon5304">박지원</a></th>
+      <th><a href="https://github.com/shinwooju">신우주</a></th>
+      <th><a href="https://github.com/PeterLEEEEEE">이무현</a></th>
     </tr>
     <tr>
       <td>
