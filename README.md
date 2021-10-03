@@ -99,7 +99,7 @@
       </td>
       <td>
        * 메인페이지 구현<br>
-         - Carocell<br>
+         - Carousel<br>
          - 도서 추천서비스<br>
          - 오늘의 도서 보기<br>
        * 상세페이지 구현<br>
