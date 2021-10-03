@@ -21,8 +21,8 @@
 
 
 <div id=header align="center">
-  <img src="">
-  <a href="https://www.youtube.com/watch?v=WJS8kuzjzJU">시연 영상 보러가기</a>
+  <img src="s3://janine-bucket/Screen Shot 2021-10-03 at 2.48.26 PM.png">
+  <a href="https://www.youtube.com/watch?v=WJS8kuzjzJU">👉🏻 시연 영상 보러가기</a>
 </div>
 
 <br>
