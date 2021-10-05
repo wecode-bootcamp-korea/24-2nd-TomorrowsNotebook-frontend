@@ -60,7 +60,7 @@
   <tr>
     <td colspan="4">
       <ul style="text-align:left">
-        <li> FE - 상세페이지, Nav & Footer, 뷰어 기능 등 구현, 동적 라우팅 구성 및 구동 확인</li>
+        <li> FE - 상세페이지, Nav & Footer, 뷰어 기능 등 구현, 동적 라우팅 구성 및 구동 확인, 나의서재 페이지</li>
         <li> BE - 배포 및 유닛테스트 </li>
       </ul>
     </td>
